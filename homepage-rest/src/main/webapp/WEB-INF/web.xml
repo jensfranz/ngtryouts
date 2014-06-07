@@ -14,13 +14,13 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>HomepageRest</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>PRIVATE REST API</web-resource-name>
-            <url-pattern>/private/*</url-pattern>
+            <url-pattern>/api/secured/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>HEAD</http-method>
@@ -42,4 +42,10 @@
         <description/>
         <role-name>authenticatedUser</role-name>
     </security-role>
+
+    <!-- kicks in when jaas returns 401, while filter will be called after jaas -->
+    <error-page>
+        <error-code>401</error-code>
+        <location>/api/unauthorized</location>
+    </error-page>
 </web-app>
