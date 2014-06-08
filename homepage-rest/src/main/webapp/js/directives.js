@@ -21,17 +21,17 @@ angular.module('myApp.directives', [])
             }
         };
     }])
-    .directive('loginDropdown', ['AuthService', function (AuthService) {
+    .directive('loginDropdown', ['AuthService', 'Session', function (AuthService, Session) {
         return {
-            restrict: 'A',
+            templateUrl: '../templates/logindropdown.html',
+            restrict: 'E',
+            replace: true,
             link: function (scope, element, attrs) {
                 scope.AuthService = AuthService;
-                scope.$watch('AuthService.isAuthenticated()', function (isAuthenticated) {
-                    if (isAuthenticated) {
-                        // close drop-down toggle
-                        element.removeClass('open');
-                    }
-                });
+                scope.Session = Session;
+                scope.logout = function () {
+                    Session.destroy();
+                };
             }
         };
     }])

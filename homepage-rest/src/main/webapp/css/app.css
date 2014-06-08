@@ -28,3 +28,51 @@
     content: "";
     padding: 0;
 }
+
+/* ---- CSS for login dropdown ---- */
+.nav > div[login-dropdown], .nav > a {
+    line-height: 20px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+/* black background fill */
+.navbar-inverse .navbar-nav > div[login-dropdown].open {
+    color: #fff;
+    background-color: #080808;
+}
+
+/* remove underline */
+.navbar-inverse .navbar-nav > div[login-dropdown] > a:hover.dropdown-toggle,
+.navbar-inverse .navbar-nav > div[login-dropdown] > a:focus.dropdown-toggle,
+.nav > a:hover,
+.nav > a:focus {
+    text-decoration: none;
+}
+
+/* grey color when not hovered */
+.navbar-inverse .navbar-nav > div[login-dropdown] > a.dropdown-toggle,
+.nav > a {
+    color: #999;
+}
+
+/* white color when hovered */
+.navbar-inverse .navbar-nav > div[login-dropdown] > a:hover.dropdown-toggle,
+.nav > a:hover {
+    color: #fff;
+}
+
+/* put space between form elements */
+form.navbar-form > * {
+    margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+    .nav > div[login-dropdown], .nav > a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+/* ---- END CSS for login dropdown ---- */

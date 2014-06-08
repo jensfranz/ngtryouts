@@ -1,0 +1,17 @@
+<div ng-switch on="AuthService.isAuthenticated()" class="nav navbar-nav navbar-right">
+    <a ng-switch-when="true" ng-click="logout()" href="">
+        <span class="glyphicon glyphicon-log-out"></span> Logout {{Session.user}}
+    </a>
+
+    <div ng-switch-default login-dropdown class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-log-in"></span>
+            <b class="caret"></b>
+        </a>
+
+        <div class="dropdown-menu">
+            <div class="dropdown-header">Login</div>
+            <login></login>
+        </div>
+    </div>
+</div>
