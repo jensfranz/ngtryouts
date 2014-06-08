@@ -21,6 +21,20 @@ angular.module('myApp.directives', [])
             }
         };
     }])
+    .directive('loginDropdown', ['AuthService', function (AuthService) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.AuthService = AuthService;
+                scope.$watch('AuthService.isAuthenticated()', function (isAuthenticated) {
+                    if (isAuthenticated) {
+                        // close drop-down toggle
+                        element.removeClass('open');
+                    }
+                });
+            }
+        };
+    }])
     .directive('menu', function () {
         return {
             templateUrl: '../templates/menu.html',

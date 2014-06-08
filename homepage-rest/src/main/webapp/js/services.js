@@ -3,7 +3,7 @@
 /* Services */
 angular.module('myApp.services', [])
     .value('version', '0.1')
-    .factory('AuthService', ['$http', 'Session', function ($http, Session) {
+    .factory('AuthService', ['$http', 'Session', '$log', function ($http, Session, $log) {
         return {
             login: function (credentials) {
                 $http.defaults.headers.common.Authorization = 'Basic ' + btoa(credentials.user + ':' + credentials.password);
@@ -11,12 +11,15 @@ angular.module('myApp.services', [])
                     .get("http://localhost:8080/api/secured/checkauthorized")
                     .success(function () {
                         Session.create(credentials.user);
-                        alert('User logged in');
+                        $log.info('User logged in');
                     })
                     .error(function () {
                         delete $http.defaults.headers.common.Authorization;
-                        alert('Error logging in');
+                        $log.info('Error logging in');
                     })
+            },
+            isAuthenticated: function () {
+                return !!Session.user;
             }
         }
     }])
@@ -27,5 +30,4 @@ angular.module('myApp.services', [])
         this.destroy = function () {
             this.user = null;
         };
-        // TODO necessary?: return this;
     });
