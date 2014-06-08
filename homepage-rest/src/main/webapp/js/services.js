@@ -13,9 +13,13 @@ angular.module('myApp.services', [])
                         Session.create(credentials.user);
                         $log.info('User logged in');
                     })
-                    .error(function () {
+                    .error(function (data, status, headers, config) {
+                        if (status === 401) {
+                            $log.info('Cannot log in: wrong cedentials.');
+                        } else {
+                            $log.error('Error logging in: ' + status);
+                        }
                         delete $http.defaults.headers.common.Authorization;
-                        $log.info('Error logging in');
                     })
             },
             isAuthenticated: function () {
