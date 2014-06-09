@@ -8,7 +8,7 @@ angular.module('myApp.services', [])
             login: function (credentials) {
                 $http.defaults.headers.common.Authorization = 'Basic ' + btoa(credentials.user + ':' + credentials.password);
                 return $http
-                    .get("http://localhost:8080/api/secured/checkauthorized")
+                    .get('http://localhost:8080/api/secured/checkauthorized')
                     .success(function () {
                         Session.create(credentials.user);
                         $log.info('User logged in');
