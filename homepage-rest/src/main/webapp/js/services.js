@@ -22,6 +22,11 @@ angular.module('myApp.services', [])
                         delete $http.defaults.headers.common.Authorization;
                     })
             },
+            logout: function () {
+                Session.destroy();
+                delete $http.defaults.headers.common.Authorization;
+
+            },
             isAuthenticated: function () {
                 return !!Session.user;
             }

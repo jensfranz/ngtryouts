@@ -30,7 +30,7 @@ angular.module('myApp.directives', [])
                 scope.AuthService = AuthService;
                 scope.Session = Session;
                 scope.logout = function () {
-                    Session.destroy();
+                    AuthService.logout();
                 };
             }
         };
