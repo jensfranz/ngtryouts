@@ -1,8 +1,8 @@
-'use strict';
-
+/*global describe:false, it:false, module:false, inject:false, beforeEach:false, expect:false */
 /* jasmine specs for directives go here */
 
 describe('directives', function () {
+    'use strict';
     beforeEach(module('myApp.directives'));
 
     describe('app-version', function () {
