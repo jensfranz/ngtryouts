@@ -1,39 +1,39 @@
-'use strict';
-
+/*global describe:false, it:false, beforeEach:false, expect:false, browser:false, element:false, by:false */
 /* https://github.com/angular/protractor/blob/master/docs/getting-started.md */
 
 describe('my app', function () {
+    'use strict';
 
     browser.get('index.html');
 
     it('should automatically redirect to /view1 when location hash/fragment is empty', function () {
-        expect(browser.getLocationAbsUrl()).toMatch("/view1");
+        expect(browser.getLocationAbsUrl()).toMatch("/home");
     });
 
 
-    describe('view1', function () {
+    describe('home', function () {
 
         beforeEach(function () {
-            browser.get('index.html#/view1');
+            browser.get('index.html#/home');
         });
 
 
-        it('should render view1 when user navigates to /view1', function () {
-            expect(element.all(by.css('[ng-view] p')).first().getText()).
-                toMatch(/partial for view 1/);
+        it('should render home when user navigates to /home', function () {
+            expect(element.all(by.css('[ng-view] div h1')).first().getText()).
+                toMatch(/Homepage von Jens Franz/);
         });
 
     });
 
 
-    describe('view2', function () {
+    describe('about', function () {
 
         beforeEach(function () {
-            browser.get('index.html#/view2');
+            browser.get('index.html#/about');
         });
 
 
-        it('should render view2 when user navigates to /view2', function () {
+        it('should render about when user navigates to /about', function () {
             expect(element.all(by.css('[ng-view] p')).first().getText()).
                 toMatch(/partial for view 2/);
         });
