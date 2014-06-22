@@ -1,15 +1,14 @@
-'use strict';
-
+/*global directive, angular */
 /* Directives */
-
-
-angular.module('myApp.directives', [])
+angular.module('myApp.directives', ['myApp.services'])
     .directive('appVersion', ['version', function (version) {
+        'use strict';
         return function (scope, elm, attrs) {
             elm.text(version);
         };
     }])
     .directive('login', ['AuthService', function (AuthService) {
+        'use strict';
         return {
             templateUrl: '../templates/login.html',
             restrict: 'E',
@@ -22,6 +21,7 @@ angular.module('myApp.directives', [])
         };
     }])
     .directive('loginDropdown', ['AuthService', 'Session', function (AuthService, Session) {
+        'use strict';
         return {
             templateUrl: '../templates/logindropdown.html',
             restrict: 'E',
@@ -36,6 +36,7 @@ angular.module('myApp.directives', [])
         };
     }])
     .directive('menu', function () {
+        'use strict';
         return {
             templateUrl: '../templates/menu.html',
             restrict: 'E',
@@ -47,11 +48,12 @@ angular.module('myApp.directives', [])
  * href attribute with the current location. Then the class active will be added on the element.
  */
     .directive('activeLink', ['$location', function (location) {
+        'use strict';
         return {
             restrict: 'A',
             link: function (scope, element, attrs, controller) {
-                var clazz = attrs.activeLink || 'active';
-                var path = element.find("a").attr('href');
+                var clazz = attrs.activeLink || 'active',
+                    path = element.find("a").attr('href');
                 path = path.substring(1); //hack because path does not return including hashbang
                 scope.location = location;
                 scope.$watch('location.path()', function (newPath) {
